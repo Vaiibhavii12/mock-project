@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" th:href="@{/css/login.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Sign In</h1>
+    
+    <!-- Show error if exists -->
+    <div th:if="${error}" style="color: red; margin-bottom: 1rem; font-weight: bold;">
+        <p th:text="${error}"></p>
+    </div>
+    
+    <form th:action="@{/loginHandle}" method="post">
+        <label for="email"><b>Email</b></label>
+        <input type="email" placeholder="Enter Email" name="email" id="email" required />
+
+        <label for="password"><b>Password</b></label>
+        <div class="password-container">
+            <input type="password" placeholder="Enter Password" name="password" id="password" required />
+            <i class="fa fa-eye" onclick="togglePassword()"></i>
+        </div>
+
+        <button type="submit">Sign In</button>
+
+        <p class="register-link">Don't have an account? <a th:href="@{/register}">Register</a></p>
+    </form>
+</div>
+
+<script>
+    function togglePassword() {
+        const passwordField = document.getElementById("password");
+        const icon = document.querySelector(".password-container i");
+
+        if (passwordField.type === "password") {
+            passwordField.type = "text";
+            icon.classList.replace("fa-eye", "fa-eye-slash");
+        } else {
+            passwordField.type = "password";
+            icon.classList.replace("fa-eye-slash", "fa-eye");
+        }
+    }
+</script>
+</body>
+</html>

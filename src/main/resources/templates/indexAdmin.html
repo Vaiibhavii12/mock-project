@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Login</title>
+    <link rel="stylesheet" th:href="@{/css/styleAdmin.css}">
+</head>
+
+<body style="background-color: lightblue;">
+    <form th:action="@{/admin/adminHandle}" method="post">
+        <div class="container">
+            <h1>Admin Login</h1>
+            <p>Welcome</p>
+
+            <!-- Show error message if login fails -->
+            <div th:if="${error}" class="text-danger" style="color: red; margin-bottom: 10px;">
+                <p th:text="${error}"></p>
+            </div>
+
+            <label for="email"><b>Email</b></label>
+            <input
+                type="email"
+                placeholder="Enter email"
+                name="email"
+                id="email"
+                required
+            />
+
+            <label for="pwd"><b>Password</b></label>
+            <input
+                type="password"
+                placeholder="Enter Password"
+                name="password"
+                id="pwd"
+                required
+            />
+
+            <button type="submit">Login</button>
+        </div>
+    </form>
+</body>
+</html>

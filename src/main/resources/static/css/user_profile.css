@@ -1,0 +1,95 @@
+@charset "ISO-8859-1";
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    padding: 50px 20px;
+}
+
+.profile-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    padding: 30px;
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+}
+
+.profile-card h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.profile-info p {
+    font-size: 16px;
+    margin: 10px 0;
+    color: #555;
+}
+
+.profile-actions {
+    margin-top: 30px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: white;
+    margin: 0 10px;
+    transition: 0.3s ease;
+}
+
+.btn.edit {
+    background-color: #3498db;
+}
+
+.btn.edit:hover {
+    background-color: #2980b9;
+}
+
+.btn.book {
+    background-color: #2ecc71;
+}
+
+.btn.book:hover {
+    background-color: #27ae60;
+}
+
+@media (max-width: 600px) {
+    .btn {
+        display: block;
+        margin: 10px auto;
+        width: 80%;
+    }
+}
+
+
+.form-group {
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 15px;
+}

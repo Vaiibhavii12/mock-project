@@ -1,0 +1,102 @@
+/* Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(to right, #74ebd5, #9face6);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+/* About Section */
+.about-section {
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 1000px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    overflow: hidden;
+    padding: 2rem;
+}
+
+.inner-container {
+    text-align: center;
+}
+
+h1 {
+    font-size: 36px;
+    margin-bottom: 1rem;
+    color: #F85370;
+}
+
+.text {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #333;
+    margin-bottom: 1.5rem;
+}
+
+/* Links */
+.links {
+    list-style: none;
+    margin-bottom: 1.5rem;
+}
+
+.links li {
+    margin: 8px 0;
+}
+
+.links a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.links a:hover {
+    text-decoration: underline;
+}
+
+/* Skills */
+.skills {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.skills span {
+    background-color: #f1f1f1;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+    font-size: 14px;
+}
+
+.skills span:hover,
+.skills .active {
+    background: linear-gradient(to right, #f85370, #e3566f);
+    color: #fff;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .about-section {
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    .text {
+        font-size: 14px;
+    }
+}

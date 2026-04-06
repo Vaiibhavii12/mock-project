@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Feedback</title>
+<link rel="stylesheet" th:href="@{/css/feedback.css}">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</head>
+<body>
+	<form th:action="@{/submitFeedback}" method="post"
+		onsubmit="return showSuccessDialog()">
+		<div class="container">
+			<h1>Feedback</h1>
+			<p>We value your opinion!</p>
+
+			<label for="username"><b>Name</b></label> <input type="text"
+				name="fullName" id="username" placeholder="Enter your name" required>
+
+			<label for="email"><b>Email</b></label> <input type="email"
+				name="email" id="email" placeholder="Enter your email" required>
+
+			<label for="phone"><b>Phone Number</b></label> <input type="tel"
+				name="phone" id="phone" placeholder="Enter your phone number">
+
+			<label for="category"><b>Feedback Category</b></label> <select
+				name="category" id="category" required>
+				<option value="">Select</option>
+				<option value="Bug Report">Bug Report</option>
+				<option value="Suggestion">Suggestion</option>
+				<option value="General Feedback">General Feedback</option>
+			</select> <label for="feedbackText"><b>Your Feedback</b></label>
+			<textarea name="feedbackText" id="feedbackText" rows="6"
+				placeholder="Write your feedback here..." required></textarea>
+
+			<button type="submit">Submit</button>
+		</div>
+	</form>
+
+	<script>
+    document.getElementById("feedbackForm").addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevent actual form submission
+
+        // Optional: Submit via AJAX or send form data to your endpoint
+
+        Swal.fire({
+            title: "Feedback Submitted!",
+            text: "Thank you for your feedback.",
+            icon: "success",
+            confirmButtonText: "OK"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "/";
+            }
+        });
+    });
+</script>
+</body>
+</html>

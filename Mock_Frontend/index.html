@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>InterviewForge — AI Mock Interview Platform</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+
+  <!-- Custom Cursor -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- Noise Overlay -->
+  <div class="noise-overlay"></div>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-brand">
+      <span class="brand-icon"><i class="fa-solid fa-bolt"></i></span>
+      <span class="brand-name">InterviewForge</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#features"><i class="fa-regular fa-compass"></i> Features</a></li>
+      <li><a href="#domains"><i class="fa-solid fa-layer-group"></i> Domains</a></li>
+      <li><a href="#how"><i class="fa-solid fa-route"></i> How It Works</a></li>
+      <li><a href="#stats"><i class="fa-solid fa-chart-line"></i> Stats</a></li>
+    </ul>
+    <div class="nav-cta">
+      <button class="btn-ghost" onclick="openModal('loginModal')"><i class="fa-regular fa-user"></i> Sign In</button>
+      <button class="btn-primary" onclick="openModal('signupModal')"><i class="fa-solid fa-rocket"></i> Start Free</button>
+    </div>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="home">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-orb orb1"></div>
+    <div class="hero-orb orb2"></div>
+    <div class="hero-orb orb3"></div>
+
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        <i class="fa-solid fa-microchip"></i> AI-Powered Interview Simulator
+      </div>
+      <h1 class="hero-title">
+        <span class="title-line">Master Every</span>
+        <span class="title-line gradient-text">Interview.</span>
+        <span class="title-line">Land Your</span>
+        <span class="title-line accent-stroke">Dream Job.</span>
+      </h1>
+      <p class="hero-sub">
+        <i class="fa-solid fa-brain"></i> Real-time AI feedback &nbsp;·&nbsp;
+        <i class="fa-solid fa-video"></i> Facial analysis &nbsp;·&nbsp;
+        <i class="fa-solid fa-waveform-lines"></i> Voice coaching &nbsp;·&nbsp;
+        <i class="fa-solid fa-chart-radar"></i> Skill radar
+      </p>
+      <div class="hero-actions">
+        <button class="btn-glow" onclick="openInterviewSetup()">
+          <i class="fa-solid fa-play-circle"></i> Start Mock Interview
+          <span class="btn-shine"></span>
+        </button>
+        <button class="btn-outline-hero" onclick="openModal('demoModal')">
+          <i class="fa-solid fa-circle-play"></i> Watch Demo
+        </button>
+      </div>
+      <div class="hero-trust">
+        <div class="trust-avatars">
+          <img src="https://i.pravatar.cc/32?img=1" alt="user"/>
+          <img src="https://i.pravatar.cc/32?img=2" alt="user"/>
+          <img src="https://i.pravatar.cc/32?img=3" alt="user"/>
+          <img src="https://i.pravatar.cc/32?img=4" alt="user"/>
+          <img src="https://i.pravatar.cc/32?img=5" alt="user"/>
+        </div>
+        <p><strong>12,400+</strong> students placed at top companies <i class="fa-brands fa-google"></i> <i class="fa-brands fa-amazon"></i> <i class="fa-brands fa-microsoft"></i></p>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="mock-card">
+        <div class="mock-card-header">
+          <div class="mock-card-dot red"></div>
+          <div class="mock-card-dot yellow"></div>
+          <div class="mock-card-dot green"></div>
+          <span class="mock-card-title"><i class="fa-solid fa-circle-dot pulse-red"></i> Live Interview</span>
+        </div>
+        <div class="interviewer-avatar">
+          <div class="avatar-ring"></div>
+          <div class="avatar-face">
+            <i class="fa-solid fa-robot"></i>
+          </div>
+          <div class="ai-label"><i class="fa-solid fa-sparkles"></i> AI Interviewer</div>
+        </div>
+        <div class="question-bubble">
+          <i class="fa-solid fa-comment-dots"></i>
+          <p>"Explain the concept of <strong>dynamic programming</strong> with an example."</p>
+        </div>
+        <div class="response-metrics">
+          <div class="metric-chip"><i class="fa-solid fa-face-smile"></i> Confidence <span class="metric-val good">87%</span></div>
+          <div class="metric-chip"><i class="fa-solid fa-microphone"></i> Clarity <span class="metric-val ok">73%</span></div>
+          <div class="metric-chip"><i class="fa-solid fa-clock"></i> Pace <span class="metric-val good">94%</span></div>
+        </div>
+        <div class="waveform-bar">
+          <div class="wave-anim">
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <span class="rec-label"><i class="fa-solid fa-record-vinyl"></i> Recording...</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-hint">
+      <div class="scroll-line"></div>
+      <span><i class="fa-solid fa-arrow-down"></i> Scroll to explore</span>
+    </div>
+  </section>
+
+  <!-- ===== MARQUEE STRIP ===== -->
+  <div class="marquee-strip">
+    <div class="marquee-track">
+      <span><i class="fa-brands fa-google"></i> Google</span>
+      <span><i class="fa-brands fa-amazon"></i> Amazon</span>
+      <span><i class="fa-brands fa-microsoft"></i> Microsoft</span>
+      <span><i class="fa-brands fa-meta"></i> Meta</span>
+      <span><i class="fa-brands fa-apple"></i> Apple</span>
+      <span><i class="fa-brands fa-netflix"></i> Netflix</span>
+      <span><i class="fa-solid fa-building"></i> Goldman Sachs</span>
+      <span><i class="fa-brands fa-uber"></i> Uber</span>
+      <span><i class="fa-brands fa-airbnb"></i> Airbnb</span>
+      <span><i class="fa-brands fa-twitter"></i> Twitter/X</span>
+      <span><i class="fa-brands fa-google"></i> Google</span>
+      <span><i class="fa-brands fa-amazon"></i> Amazon</span>
+      <span><i class="fa-brands fa-microsoft"></i> Microsoft</span>
+      <span><i class="fa-brands fa-meta"></i> Meta</span>
+      <span><i class="fa-brands fa-apple"></i> Apple</span>
+      <span><i class="fa-brands fa-netflix"></i> Netflix</span>
+      <span><i class="fa-solid fa-building"></i> Goldman Sachs</span>
+      <span><i class="fa-brands fa-uber"></i> Uber</span>
+    </div>
+  </div>
+
+  <!-- ===== STATS ===== -->
+  <section class="stats-section" id="stats">
+    <div class="section-label"><i class="fa-solid fa-chart-bar"></i> Platform Metrics</div>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon"><i class="fa-solid fa-users"></i></div>
+        <div class="stat-number" data-target="50000">0</div>
+        <div class="stat-suffix">+</div>
+        <div class="stat-label">Active Users</div>
+        <div class="stat-bar"><div class="stat-fill" style="width:90%"></div></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon"><i class="fa-solid fa-clipboard-check"></i></div>
+        <div class="stat-number" data-target="250000">0</div>
+        <div class="stat-suffix">+</div>
+        <div class="stat-label">Interviews Conducted</div>
+        <div class="stat-bar"><div class="stat-fill" style="width:75%"></div></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon"><i class="fa-solid fa-trophy"></i></div>
+        <div class="stat-number" data-target="92">0</div>
+        <div class="stat-suffix">%</div>
+        <div class="stat-label">Success Rate</div>
+        <div class="stat-bar"><div class="stat-fill" style="width:92%"></div></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon"><i class="fa-solid fa-building-columns"></i></div>
+        <div class="stat-number" data-target="300">0</div>
+        <div class="stat-suffix">+</div>
+        <div class="stat-label">Partner Companies</div>
+        <div class="stat-bar"><div class="stat-fill" style="width:60%"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FEATURES ===== -->
+  <section class="features-section" id="features">
+    <div class="section-label"><i class="fa-solid fa-wand-magic-sparkles"></i> Core Features</div>
+    <h2 class="section-title">Everything You Need to <span class="gradient-text">Dominate</span> Interviews</h2>
+    <p class="section-sub">Powered by cutting-edge AI — not basic Q&A, but a full immersive simulation</p>
+
+    <div class="features-grid">
+      <div class="feat-card feat-large">
+        <div class="feat-icon-wrap"><i class="fa-solid fa-brain"></i></div>
+        <h3><i class="fa-solid fa-bolt"></i> Real-Time AI Feedback</h3>
+        <p>Our GPT-4 powered engine analyzes every word, tone, and pause. Get instant scoring on clarity, relevance, and depth of your answer.</p>
+        <div class="feat-tags">
+          <span><i class="fa-solid fa-microchip"></i> NLP Analysis</span>
+          <span><i class="fa-solid fa-chart-simple"></i> Score Engine</span>
+        </div>
+        <div class="feat-glow"></div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon-wrap"><i class="fa-solid fa-video"></i></div>
+        <h3><i class="fa-solid fa-eye"></i> Facial Expression Analysis</h3>
+        <p>Computer vision tracks your confidence, eye contact, and micro-expressions in real time.</p>
+        <div class="feat-tags"><span><i class="fa-solid fa-camera"></i> CV Model</span></div>
+        <div class="feat-glow"></div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon-wrap"><i class="fa-solid fa-waveform-lines"></i></div>
+        <h3><i class="fa-solid fa-microphone-lines"></i> Voice & Tone Coaching</h3>
+        <p>Detect filler words, speech pace, volume, and fluency. Get coached to speak like a pro.</p>
+        <div class="feat-tags"><span><i class="fa-solid fa-wave-square"></i> Speech AI</span></div>
+        <div class="feat-glow"></div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon-wrap"><i class="fa-solid fa-code"></i></div>
+        <h3><i class="fa-solid fa-terminal"></i> Live Code Editor</h3>
+        <p>Solve DSA problems in our built-in IDE with real-time syntax highlighting, test cases & complexity feedback.</p>
+        <div class="feat-tags"><span><i class="fa-solid fa-code-branch"></i> 20+ Languages</span></div>
+        <div class="feat-glow"></div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon-wrap"><i class="fa-solid fa-chart-radar"></i></div>
+        <h3><i class="fa-solid fa-circle-nodes"></i> Skill Radar</h3>
+        <p>Visual spider chart of your strengths: DSA, System Design, HR, Behavioral, Communication, Problem Solving.</p>
+        <div class="feat-tags"><span><i class="fa-solid fa-chart-pie"></i> Analytics</span></div>
+        <div class="feat-glow"></div>
+      </div>
+      <div class="feat-card feat-large">
+        <div class="feat-icon-wrap"><i class="fa-solid fa-timeline"></i></div>
+        <h3><i class="fa-solid fa-calendar-check"></i> Interview Playback & Review</h3>
+        <p>Watch your recorded session with an annotated timeline. AI pinpoints exact moments where you excelled or stumbled — learn from every second.</p>
+        <div class="feat-tags">
+          <span><i class="fa-solid fa-film"></i> Playback</span>
+          <span><i class="fa-solid fa-bookmark"></i> Annotations</span>
+          <span><i class="fa-solid fa-lightbulb"></i> Tips</span>
+        </div>
+        <div class="feat-glow"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DOMAINS ===== -->
+  <section class="domains-section" id="domains">
+    <div class="section-label"><i class="fa-solid fa-sitemap"></i> Interview Domains</div>
+    <h2 class="section-title">Choose Your <span class="gradient-text">Battle Ground</span></h2>
+    <div class="domains-grid">
+      <div class="domain-card" onclick="startInterview('DSA')">
+        <div class="domain-icon"><i class="fa-solid fa-diagram-project"></i></div>
+        <h3>DSA & Algorithms</h3>
+        <p>Arrays, Trees, Graphs, DP, Greedy — from Easy to Hard</p>
+        <div class="domain-meta"><span><i class="fa-solid fa-question-circle"></i> 500+ Questions</span><span class="difficulty hard"><i class="fa-solid fa-fire"></i> Hard</span></div>
+        <div class="domain-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+      </div>
+      <div class="domain-card" onclick="startInterview('System Design')">
+        <div class="domain-icon"><i class="fa-solid fa-server"></i></div>
+        <h3>System Design</h3>
+        <p>Design scalable systems like Netflix, Uber, WhatsApp</p>
+        <div class="domain-meta"><span><i class="fa-solid fa-question-circle"></i> 80+ Scenarios</span><span class="difficulty hard"><i class="fa-solid fa-fire"></i> Expert</span></div>
+        <div class="domain-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+      </div>
+      <div class="domain-card" onclick="startInterview('Frontend')">
+        <div class="domain-icon"><i class="fa-brands fa-react"></i></div>
+        <h3>Frontend Dev</h3>
+        <p>React, CSS, JS fundamentals, performance, architecture</p>
+        <div class="domain-meta"><span><i class="fa-solid fa-question-circle"></i> 300+ Questions</span><span class="difficulty medium"><i class="fa-solid fa-gauge-high"></i> Medium</span></div>
+        <div class="domain-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+      </div>
+      <div class="domain-card" onclick="startInterview('Backend')">
+        <div class="domain-icon"><i class="fa-solid fa-database"></i></div>
+        <h3>Backend Dev</h3>
+        <p>Node.js, APIs, Databases, Microservices, Security</p>
+        <div class="domain-meta"><span><i class="fa-solid fa-question-circle"></i> 250+ Questions</span><span class="difficulty medium"><i class="fa-solid fa-gauge-high"></i> Medium</span></div>
+        <div class="domain-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+      </div>
+      <div class="domain-card" onclick="startInterview('HR')">
+        <div class="domain-icon"><i class="fa-solid fa-handshake"></i></div>
+        <h3>HR & Behavioral</h3>
+        <p>STAR method, leadership, conflict, situational Q&A</p>
+        <div class="domain-meta"><span><i class="fa-solid fa-question-circle"></i> 200+ Questions</span><span class="difficulty easy"><i class="fa-solid fa-circle-check"></i> Easy</span></div>
+        <div class="domain-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+      </div>
+      <div class="domain-card" onclick="startInterview('ML')">
+        <div class="domain-icon"><i class="fa-solid fa-robot"></i></div>
+        <h3>ML & AI</h3>
+        <p>ML concepts, model deployment, statistics, deep learning</p>
+        <div class="domain-meta"><span><i class="fa-solid fa-question-circle"></i> 180+ Questions</span><span class="difficulty hard"><i class="fa-solid fa-fire"></i> Hard</span></div>
+        <div class="domain-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HOW IT WORKS ===== -->
+  <section class="how-section" id="how">
+    <div class="section-label"><i class="fa-solid fa-map"></i> Process</div>
+    <h2 class="section-title">From <span class="gradient-text">Zero</span> to Interview-Ready</h2>
+    <div class="steps-container">
+      <div class="step-connector"></div>
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-icon"><i class="fa-solid fa-sliders"></i></div>
+        <h3>Configure <i class="fa-solid fa-gear"></i></h3>
+        <p>Pick your role, company type, difficulty level, and interview format. Full control.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-icon"><i class="fa-solid fa-microphone"></i></div>
+        <h3>Simulate <i class="fa-solid fa-play"></i></h3>
+        <p>Enter a live interview room. AI asks questions. You answer. Camera + mic active.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+        <h3>Analyze <i class="fa-solid fa-chart-line"></i></h3>
+        <p>Get a detailed scorecard with strengths, weaknesses, and an AI-generated improvement plan.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div class="step-icon"><i class="fa-solid fa-arrow-trend-up"></i></div>
+        <h3>Improve <i class="fa-solid fa-dumbbell"></i></h3>
+        <p>Track progress over time. Retake. Compare. Climb the leaderboard. Get hired.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIALS ===== -->
+  <section class="testimonials-section">
+    <div class="section-label"><i class="fa-solid fa-quote-left"></i> Success Stories</div>
+    <h2 class="section-title">Real People, <span class="gradient-text">Real Offers</span></h2>
+    <div class="testimonials-track" id="testimonialsTrack">
+      <div class="testi-card">
+        <div class="testi-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <p>"InterviewForge helped me crack my Google SWE interview in 3 weeks. The AI feedback was brutally honest and exactly what I needed."</p>
+        <div class="testi-author"><img src="https://i.pravatar.cc/40?img=10" alt=""/><div><strong>Arjun Mehta</strong><span><i class="fa-brands fa-google"></i> Google SWE — ₹45 LPA</span></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <p>"The facial analysis feature is insane. Turns out I look nervous without realizing it. Fixed it, aced my Amazon interview."</p>
+        <div class="testi-author"><img src="https://i.pravatar.cc/40?img=20" alt=""/><div><strong>Priya Sharma</strong><span><i class="fa-brands fa-amazon"></i> Amazon SDE-2 — ₹52 LPA</span></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <p>"Did 60+ mock interviews here. The skill radar showed exactly where I lacked. Best investment of my BTech final year."</p>
+        <div class="testi-author"><img src="https://i.pravatar.cc/40?img=30" alt=""/><div><strong>Rohan Verma</strong><span><i class="fa-brands fa-microsoft"></i> Microsoft — ₹40 LPA</span></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <p>"From 0 to placed at Meta in 2 months. The system design module is absolutely elite-level content."</p>
+        <div class="testi-author"><img src="https://i.pravatar.cc/40?img=40" alt=""/><div><strong>Sneha Patil</strong><span><i class="fa-brands fa-meta"></i> Meta — ₹60 LPA</span></div></div>
+      </div>
+    </div>
+    <div class="testi-nav">
+      <button onclick="scrollTestis(-1)"><i class="fa-solid fa-chevron-left"></i></button>
+      <button onclick="scrollTestis(1)"><i class="fa-solid fa-chevron-right"></i></button>
+    </div>
+  </section>
+
+  <!-- ===== LEADERBOARD ===== -->
+  <section class="leaderboard-section">
+    <div class="section-label"><i class="fa-solid fa-ranking-star"></i> Leaderboard</div>
+    <h2 class="section-title">Top <span class="gradient-text">Performers</span> This Week</h2>
+    <div class="leaderboard-table">
+      <div class="lb-header">
+        <span><i class="fa-solid fa-hashtag"></i> Rank</span>
+        <span><i class="fa-solid fa-user"></i> User</span>
+        <span><i class="fa-solid fa-star"></i> Score</span>
+        <span><i class="fa-solid fa-fire"></i> Streak</span>
+        <span><i class="fa-solid fa-building"></i> Domain</span>
+      </div>
+      <div class="lb-row gold">
+        <span><i class="fa-solid fa-crown"></i> 1</span>
+        <span><img src="https://i.pravatar.cc/28?img=11" alt=""/> Aditya R.</span>
+        <span>9840</span>
+        <span><i class="fa-solid fa-fire"></i> 21</span>
+        <span>DSA</span>
+      </div>
+      <div class="lb-row silver">
+        <span><i class="fa-solid fa-medal"></i> 2</span>
+        <span><img src="https://i.pravatar.cc/28?img=22" alt=""/> Kavya M.</span>
+        <span>9720</span>
+        <span><i class="fa-solid fa-fire"></i> 18</span>
+        <span>System Design</span>
+      </div>
+      <div class="lb-row bronze">
+        <span><i class="fa-solid fa-award"></i> 3</span>
+        <span><img src="https://i.pravatar.cc/28?img=33" alt=""/> Rahul K.</span>
+        <span>9510</span>
+        <span><i class="fa-solid fa-fire"></i> 14</span>
+        <span>Frontend</span>
+      </div>
+      <div class="lb-row">
+        <span>4</span>
+        <span><img src="https://i.pravatar.cc/28?img=44" alt=""/> Ishita S.</span>
+        <span>9280</span>
+        <span><i class="fa-solid fa-fire"></i> 12</span>
+        <span>Backend</span>
+      </div>
+      <div class="lb-row">
+        <span>5</span>
+        <span><img src="https://i.pravatar.cc/28?img=55" alt=""/> Ankit P.</span>
+        <span>9140</span>
+        <span><i class="fa-solid fa-fire"></i> 9</span>
+        <span>ML & AI</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="cta-section">
+    <div class="cta-orb"></div>
+    <div class="cta-content">
+      <div class="cta-badge"><i class="fa-solid fa-rocket"></i> Limited Free Access</div>
+      <h2>Your Dream Job Is <span class="gradient-text">One Interview Away.</span></h2>
+      <p><i class="fa-solid fa-shield-check"></i> No credit card &nbsp;·&nbsp; <i class="fa-solid fa-infinity"></i> Unlimited mock sessions &nbsp;·&nbsp; <i class="fa-solid fa-clock-rotate-left"></i> Lifetime access</p>
+      <button class="btn-glow large" onclick="openInterviewSetup()">
+        <i class="fa-solid fa-bolt"></i> Launch Your Interview Now
+        <span class="btn-shine"></span>
+      </button>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-brand">
+      <span class="brand-icon"><i class="fa-solid fa-bolt"></i></span>
+      <span class="brand-name">InterviewForge</span>
+    </div>
+    <p class="footer-tagline"><i class="fa-solid fa-code"></i> Built with passion for BTech final year &nbsp;|&nbsp; <i class="fa-solid fa-heart"></i> Made to impress</p>
+    <div class="footer-links">
+      <a href="#"><i class="fa-brands fa-github"></i> GitHub</a>
+      <a href="#"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+      <a href="#"><i class="fa-solid fa-envelope"></i> Contact</a>
+    </div>
+    <p class="footer-copy">© 2025 InterviewForge · All Rights Reserved</p>
+  </footer>
+
+  <!-- ===== INTERVIEW SETUP MODAL ===== -->
+  <div class="modal-overlay" id="interviewSetupModal">
+    <div class="modal-box setup-modal">
+      <button class="modal-close" onclick="closeModal('interviewSetupModal')"><i class="fa-solid fa-xmark"></i></button>
+      <div class="modal-header">
+        <i class="fa-solid fa-sliders"></i>
+        <h2>Configure Your Interview <i class="fa-solid fa-gear rotating"></i></h2>
+        <p>Tailor the experience to your target role</p>
+      </div>
+      <div class="setup-form">
+        <div class="form-group">
+          <label><i class="fa-solid fa-briefcase"></i> Target Role</label>
+          <select id="roleSelect">
+            <option>Software Engineer</option>
+            <option>Frontend Developer</option>
+            <option>Backend Developer</option>
+            <option>Full Stack Developer</option>
+            <option>Data Scientist</option>
+            <option>ML Engineer</option>
+            <option>DevOps Engineer</option>
+            <option>Product Manager</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label><i class="fa-solid fa-building"></i> Target Company Type</label>
+          <div class="chip-select" id="companyChips">
+            <span class="chip active" onclick="toggleChip(this)"><i class="fa-solid fa-star"></i> FAANG</span>
+            <span class="chip" onclick="toggleChip(this)"><i class="fa-solid fa-seedling"></i> Startup</span>
+            <span class="chip" onclick="toggleChip(this)"><i class="fa-solid fa-building-columns"></i> MNC</span>
+            <span class="chip" onclick="toggleChip(this)"><i class="fa-solid fa-indian-rupee-sign"></i> Product</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label><i class="fa-solid fa-gauge"></i> Difficulty Level</label>
+          <div class="slider-group">
+            <input type="range" min="1" max="3" value="2" id="diffSlider" oninput="updateDiff(this.value)">
+            <span id="diffLabel">Medium <i class="fa-solid fa-gauge-high"></i></span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label><i class="fa-solid fa-list-check"></i> Interview Type</label>
+          <div class="chip-select">
+            <span class="chip active" onclick="toggleChip(this)"><i class="fa-solid fa-code"></i> Technical</span>
+            <span class="chip" onclick="toggleChip(this)"><i class="fa-solid fa-handshake"></i> HR</span>
+            <span class="chip" onclick="toggleChip(this)"><i class="fa-solid fa-puzzle-piece"></i> Mixed</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label><i class="fa-solid fa-clock"></i> Duration</label>
+          <div class="chip-select">
+            <span class="chip" onclick="toggleChip(this)"><i class="fa-solid fa-bolt"></i> 15 min</span>
+            <span class="chip active" onclick="toggleChip(this)"><i class="fa-solid fa-hourglass-half"></i> 30 min</span>
+            <span class="chip" onclick="toggleChip(this)"><i class="fa-solid fa-hourglass-end"></i> 60 min</span>
+          </div>
+        </div>
+        <button class="btn-glow full-width" onclick="launchInterview()">
+          <i class="fa-solid fa-play-circle"></i> Begin Interview Session
+          <span class="btn-shine"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== INTERVIEW ROOM MODAL ===== -->
+  <div class="modal-overlay" id="interviewRoomModal">
+    <div class="modal-box room-modal">
+      <div class="room-header">
+        <div class="room-info">
+          <span class="live-badge"><i class="fa-solid fa-circle"></i> LIVE</span>
+          <span id="roomRole">Software Engineer Interview</span>
+        </div>
+        <div class="room-timer"><i class="fa-solid fa-clock"></i> <span id="timerDisplay">30:00</span></div>
+        <button class="btn-danger" onclick="endInterview()"><i class="fa-solid fa-stop-circle"></i> End</button>
+      </div>
+      <div class="room-body">
+        <div class="interviewer-panel">
+          <div class="ai-avatar-large">
+            <div class="ai-pulse-ring"></div>
+            <i class="fa-solid fa-robot"></i>
+          </div>
+          <p class="ai-name"><i class="fa-solid fa-sparkles"></i> AI Interviewer — Alex</p>
+          <div class="question-display" id="currentQuestion">
+            <div class="q-loading">
+              <span></span><span></span><span></span>
+            </div>
+          </div>
+        </div>
+        <div class="user-panel">
+          <div class="user-cam-placeholder">
+            <i class="fa-solid fa-user-circle"></i>
+            <p><i class="fa-solid fa-video"></i> Camera Active</p>
+          </div>
+          <div class="answer-area">
+            <textarea id="answerText" placeholder="Type or speak your answer here... 🎤" rows="5"></textarea>
+            <div class="answer-controls">
+              <button class="btn-mic" id="micBtn" onclick="toggleMic()"><i class="fa-solid fa-microphone"></i> Speak</button>
+              <button class="btn-submit-ans" onclick="submitAnswer()"><i class="fa-solid fa-paper-plane"></i> Submit</button>
+            </div>
+          </div>
+          <div class="live-metrics" id="liveMetrics">
+            <div class="lm-chip"><i class="fa-solid fa-face-smile"></i><span>Confidence</span><div class="lm-bar"><div class="lm-fill" id="confBar" style="width:0%"></div></div></div>
+            <div class="lm-chip"><i class="fa-solid fa-microphone"></i><span>Clarity</span><div class="lm-bar"><div class="lm-fill" id="clarBar" style="width:0%"></div></div></div>
+            <div class="lm-chip"><i class="fa-solid fa-brain"></i><span>Relevance</span><div class="lm-bar"><div class="lm-fill" id="relBar" style="width:0%"></div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== RESULTS MODAL ===== -->
+  <div class="modal-overlay" id="resultsModal">
+    <div class="modal-box results-modal">
+      <button class="modal-close" onclick="closeModal('resultsModal')"><i class="fa-solid fa-xmark"></i></button>
+      <div class="results-header">
+        <i class="fa-solid fa-trophy"></i>
+        <h2>Interview Complete! <i class="fa-solid fa-stars"></i></h2>
+        <div class="overall-score" id="overallScore">—</div>
+        <p>Your Performance Report</p>
+      </div>
+      <div class="results-body">
+        <div class="score-breakdown">
+          <div class="score-item"><span><i class="fa-solid fa-brain"></i> Technical</span><div class="score-bar-wrap"><div class="score-bar-fill" id="techScore" style="width:0%"></div></div><span id="techScoreVal">—</span></div>
+          <div class="score-item"><span><i class="fa-solid fa-comments"></i> Communication</span><div class="score-bar-wrap"><div class="score-bar-fill" id="commScore" style="width:0%"></div></div><span id="commScoreVal">—</span></div>
+          <div class="score-item"><span><i class="fa-solid fa-lightbulb"></i> Problem Solving</span><div class="score-bar-wrap"><div class="score-bar-fill" id="probScore" style="width:0%"></div></div><span id="probScoreVal">—</span></div>
+          <div class="score-item"><span><i class="fa-solid fa-face-smile"></i> Confidence</span><div class="score-bar-wrap"><div class="score-bar-fill" id="confScore" style="width:0%"></div></div><span id="confScoreVal">—</span></div>
+        </div>
+        <div class="ai-feedback-box" id="aiFeedbackBox">
+          <h4><i class="fa-solid fa-robot"></i> AI Coach Feedback</h4>
+          <p id="aiFeedbackText">Analyzing your performance...</p>
+        </div>
+        <div class="results-actions">
+          <button class="btn-glow" onclick="openInterviewSetup()"><i class="fa-solid fa-redo"></i> Retry Interview</button>
+          <button class="btn-outline" onclick="closeModal('resultsModal')"><i class="fa-solid fa-house"></i> Back to Home</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Login Modal -->
+  <div class="modal-overlay" id="loginModal">
+    <div class="modal-box auth-modal">
+      <button class="modal-close" onclick="closeModal('loginModal')"><i class="fa-solid fa-xmark"></i></button>
+      <div class="modal-header"><i class="fa-solid fa-lock-open"></i><h2>Welcome Back <i class="fa-solid fa-hand-wave"></i></h2></div>
+      <div class="auth-form">
+        <div class="form-group"><label><i class="fa-solid fa-envelope"></i> Email</label><input type="email" placeholder="you@example.com"/></div>
+        <div class="form-group"><label><i class="fa-solid fa-key"></i> Password</label><input type="password" placeholder="••••••••"/></div>
+        <button class="btn-glow full-width" onclick="closeModal('loginModal'); openInterviewSetup()"><i class="fa-solid fa-right-to-bracket"></i> Sign In<span class="btn-shine"></span></button>
+        <p class="auth-switch">New here? <a onclick="closeModal('loginModal'); openModal('signupModal')"><i class="fa-solid fa-user-plus"></i> Create account</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Signup Modal -->
+  <div class="modal-overlay" id="signupModal">
+    <div class="modal-box auth-modal">
+      <button class="modal-close" onclick="closeModal('signupModal')"><i class="fa-solid fa-xmark"></i></button>
+      <div class="modal-header"><i class="fa-solid fa-rocket"></i><h2>Create Account <i class="fa-solid fa-sparkles"></i></h2></div>
+      <div class="auth-form">
+        <div class="form-group"><label><i class="fa-solid fa-user"></i> Full Name</label><input type="text" placeholder="Your Name"/></div>
+        <div class="form-group"><label><i class="fa-solid fa-envelope"></i> Email</label><input type="email" placeholder="you@example.com"/></div>
+        <div class="form-group"><label><i class="fa-solid fa-key"></i> Password</label><input type="password" placeholder="••••••••"/></div>
+        <button class="btn-glow full-width" onclick="closeModal('signupModal'); openInterviewSetup()"><i class="fa-solid fa-user-plus"></i> Join InterviewForge<span class="btn-shine"></span></button>
+        <p class="auth-switch">Have an account? <a onclick="closeModal('signupModal'); openModal('loginModal')"><i class="fa-solid fa-right-to-bracket"></i> Sign in</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Demo Modal -->
+  <div class="modal-overlay" id="demoModal">
+    <div class="modal-box demo-modal">
+      <button class="modal-close" onclick="closeModal('demoModal')"><i class="fa-solid fa-xmark"></i></button>
+      <div class="modal-header"><i class="fa-solid fa-clapperboard"></i><h2>Platform Demo <i class="fa-solid fa-film"></i></h2></div>
+      <div class="demo-placeholder">
+        <i class="fa-solid fa-play-circle"></i>
+        <p>Demo video would play here</p>
+        <span><i class="fa-solid fa-clock"></i> 2:30 min overview</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast">
+    <i class="fa-solid fa-circle-check"></i>
+    <span id="toastMsg">Action complete!</span>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Profile</title>
+    <link rel="stylesheet" th:href="@{/css/user_profile.css}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<div class="container">
+    <div class="profile-card">
+        <h2>Edit Your Profile</h2>
+        
+        <form th:action="@{/user/update}" th:object="${user}" method="post">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" th:field="*{name}" required />
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" th:field="*{email}" readonly />
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" th:field="*{phone}" required />
+            </div>
+
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <select th:field="*{gender}" required>
+                    <option value="" disabled>Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input type="number" th:field="*{age}" min="1" required />
+            </div>
+
+            <div class="profile-actions">
+                <button type="submit" class="btn edit">Save Changes</button>
+                <a th:href="@{/user/profile}" class="btn book">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

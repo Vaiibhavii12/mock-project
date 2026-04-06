@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Interview</title>
+    <link rel="stylesheet" href="/css/bookInterview.css">
+</head>
+<body>
+      <form th:action="@{/book-interview}" th:object="${interviewBooking}" method="post" enctype="multipart/form-data">
+        <div class="container">
+            <h1>Book Your Interview</h1>
+
+            <label for="name"><b>Full Name</b></label>
+            <input type="text" id="name" th:field="*{name}" placeholder="Enter your full name" required>
+
+            <label for="email"><b>Email Address</b></label>
+            <input type="email" id="email" th:field="*{email}" placeholder="Enter your email" readonly required>
+
+            <label for="phone"><b>Phone Number</b></label>
+            <input type="tel" id="phone" th:field="*{phone}" placeholder="Enter your phone number" required>
+
+            <label for="skills"><b>Skills / Technologies</b></label>
+            <textarea id="skills" th:field="*{skills}" rows="3" placeholder="e.g., Java, Spring Boot, React" required></textarea>
+
+            <label for="experience"><b>Years of Experience</b></label>
+            <select id="experience" th:field="*{experience}" required>
+                <option value="">Select years of experience</option>
+                <option value="0-1">0-1 years</option>
+                <option value="1-3">1-3 years</option>
+                <option value="3-5">3-5 years</option>
+                <option value="5+">5+ years</option>
+            </select>
+
+            <label for="interviewDate"><b>Preferred Interview Date</b></label>
+            <input type="date" id="interviewDate" th:field="*{interviewDate}" required>
+
+            <label for="timeSlot"><b>Preferred Time Slot</b></label>
+            <select id="timeSlot" th:field="*{timeSlot}" required>
+                <option value="">Select a time slot</option>
+                <option value="Morning">Morning</option>
+                <option value="Afternoon">Afternoon</option>
+                <option value="Evening">Evening</option>
+            </select>
+
+            <label for="resume"><b>Upload Resume</b></label>
+            <input type="file" id="resume" th:field="*{resume}" required>
+
+
+            <label for="linkedin"><b>LinkedIn Profile (optional)</b></label>
+            <input type="url" id="linkedin" th:field="*{linkedin}" placeholder="https://linkedin.com/in/yourprofile">
+
+            <label for="comments"><b>Cover Note / Additional Comments</b></label>
+            <textarea id="comments" th:field="*{comments}" rows="4" placeholder="Write something if you'd like..."></textarea>
+
+            <div class="checkbox">
+                <input type="checkbox" id="terms" name="terms" required>
+                <label for="terms">I agree to the <a href="#">Terms & Conditions</a></label>
+            </div>
+
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+</body>
+</html>

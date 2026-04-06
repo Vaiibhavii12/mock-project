@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Profile</title>
+    <link rel="stylesheet" th:href="@{/css/register.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Update Profile</h1>
+   <form th:action="@{/postUpdateProfile}" method="post" th:object="${user}">
+    <!-- No hidden ID needed now -->
+
+    <label for="fullName"><b>Full Name</b></label>
+    <input type="text" th:field="*{fullName}" placeholder="Enter your full name" />
+
+    <label for="email"><b>Email</b></label>
+    <input type="email" th:field="*{email}" readonly />
+
+    <label for="phone"><b>Phone Number</b></label>
+    <input type="tel" th:field="*{phone}" />
+
+    <label for="gender"><b>Gender</b></label>
+    <select th:field="*{gender}">
+        <option value="" disabled>Select your gender</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Other</option>
+    </select>
+
+    <label for="age"><b>Age</b></label>
+    <input type="number" th:field="*{age}" />
+
+    <button type="submit">Update Profile</button>
+</form>
+
+</div>
+</body>
+</html>
