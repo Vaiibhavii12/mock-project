@@ -3,8 +3,8 @@ package com.nil.controller;
 import com.nil.dto.UserUpdateDTO;
 import com.nil.model.User;
 import com.nil.service.UserService;
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,8 +29,13 @@ public class AuthController {
     public String registerUser(
             @ModelAttribute("user") @Valid User user,
             BindingResult result,
+            HttpSession session,
             Model model
     ) {
+        if (result.hasErrors()) {
+            return "register";
+        }
+
         if (!user.getPassword().equals(user.getConfirmPassword())) {
             model.addAttribute("passwordError", "Passwords do not match");
             return "register";
@@ -41,35 +46,51 @@ public class AuthController {
             return "register";
         }
 
-        if (result.hasErrors()) {
-            return "register";
-        }
-
         if (userService.findByEmail(user.getEmail()) != null) {
             model.addAttribute("emailExists", "An account with this email already exists");
             return "register";
         }
 
         userService.saveUser(user);
-        model.addAttribute("user", user); // add user to profile
+        session.setAttribute("user", user); // ✅ Set session after registration
+        model.addAttribute("user", user);
         return "user_profile";
     }
 
-    // Show update profile form (expects email as a query param)
+    // Show update profile form
     @GetMapping("/getUpdateProfile")
-    public String showUpdateProfileForm(@RequestParam(name = "email", required = true) String email, Model model) {
+    public String showUpdateProfileForm(
+            @RequestParam(name = "email", required = true) String email,
+            HttpSession session,
+            Model model
+    ) {
+        // ✅ Session check
+        if (session.getAttribute("user") == null) {
+            return "redirect:/login";
+        }
+
         User user = userService.findByEmail(email);
         if (user == null) {
             model.addAttribute("errorMessage", "User not found with email: " + email);
-            return "error"; // you can customize this view
+            return "error";
         }
         model.addAttribute("user", user);
         return "update_profile";
     }
-   
-    
+
+    // Handle update profile form submission
     @PostMapping("/postUpdateProfile")
-    public String updateProfile(@ModelAttribute("user") @Valid UserUpdateDTO userDto, BindingResult result, Model model) {
+    public String updateProfile(
+            @ModelAttribute("user") @Valid UserUpdateDTO userDto,
+            BindingResult result,
+            HttpSession session,
+            Model model
+    ) {
+        // ✅ Session check
+        if (session.getAttribute("user") == null) {
+            return "redirect:/login";
+        }
+
         System.out.println("Incoming email: " + userDto.getEmail());
 
         if (result.hasErrors()) {
@@ -82,22 +103,15 @@ public class AuthController {
             return "error";
         }
 
-        // Update fields from DTO
         existingUser.setFullName(userDto.getFullName());
         existingUser.setPhone(userDto.getPhone());
         existingUser.setGender(userDto.getGender());
         existingUser.setAge(userDto.getAge());
-
         userService.updateUser(existingUser);
+
+        // ✅ Update session with new user data
+        session.setAttribute("user", existingUser);
         model.addAttribute("user", existingUser);
         return "user_profile";
     }
-
-
- 
-
-
-    
-    
-    
 }
