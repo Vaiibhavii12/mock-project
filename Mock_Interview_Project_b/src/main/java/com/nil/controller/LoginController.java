@@ -20,8 +20,12 @@ public class LoginController {
 
     // Show login page
     @GetMapping("/login")
-    public String showLoginPage() {
-        return "login"; // login.html
+    public String showLoginPage(HttpSession session) {
+        // ✅ If already logged in, redirect to profile
+        if (session.getAttribute("user") != null) {
+            return "redirect:/user_profile";
+        }
+        return "login";
     }
 
     // Handle login form submission
@@ -30,15 +34,14 @@ public class LoginController {
             @RequestParam("email") String email,
             @RequestParam("password") String password,
             HttpSession session,
-            Model model) {
+            Model model
+    ) {
+        User user = userService.findByEmail(email);
 
-        User user = userService.findByEmail(email); // Only find by email
-
-        System.out.println("user details : "+user);
         if (user != null && passwordEncoder.matches(password, user.getPassword())) {
             session.setAttribute("user", user);
-            model.addAttribute("user",user);
-            return "user_profile"; // Redirect to homepage after successful login
+            model.addAttribute("user", user);
+            return "user_profile";
         } else {
             model.addAttribute("error", "Invalid email or password");
             return "login";
@@ -49,6 +52,18 @@ public class LoginController {
     @GetMapping("/logout")
     public String logout(HttpSession session) {
         session.invalidate();
-        return "redirect:/login?logout"; // Redirect with optional query param
+        return "redirect:/login?logout";
+    }
+
+    // Show user profile page
+    @GetMapping("/user_profile")
+    public String showUserProfile(HttpSession session, Model model) {
+        // ✅ Session check
+        User user = (User) session.getAttribute("user");
+        if (user == null) {
+            return "redirect:/login";
+        }
+        model.addAttribute("user", user);
+        return "user_profile";
     }
 }
